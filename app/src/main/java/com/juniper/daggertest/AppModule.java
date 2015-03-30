@@ -1,8 +1,12 @@
 package com.juniper.daggertest;
 
+import android.content.Context;
+
 import com.juniper.daggertest.service.Test;
 import com.juniper.daggertest.service.TestImpl;
 import com.juniper.daggertest.ui.MainActivity;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -21,6 +25,11 @@ public class AppModule {
     public AppModule(App app){
         this.app = app;
     }
+
+    @Provides @Singleton public Context provideApplicationContext() {
+        return app.getApplicationContext();
+    }
+
 
     @Provides
     public Test providesTestService(){

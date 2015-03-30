@@ -16,7 +16,8 @@ import dagger.Provides;
  */
 
 @Module(
-        injects = {MainActivity.class}
+        injects = {MainActivity.class, TestImpl.class},
+        library = true
 
 )
 public class AppModule {
@@ -32,7 +33,7 @@ public class AppModule {
 
 
     @Provides
-    public Test providesTestService(){
-        return new TestImpl();
+    public Test providesTestService(TestImpl impl){
+        return impl;
     }
 }
